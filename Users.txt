@@ -1,0 +1,11 @@
+		USERS tO TEST SYSTEM
+1. DRIVERS:
+	1. tavin@drivers.com  : tavin1 
+	2. gershan@drivers.com  : gershan1
+	3. mbongeni@drivers.com  : mbongeni1
+
+
+2. CUSTOMERS:	
+	1. tavin@cutomers.com  : tavin2  
+	2. gershan@cutomers.com  : gershan2
+	3. mbongeni@cutomers.com  : mbongeni2
