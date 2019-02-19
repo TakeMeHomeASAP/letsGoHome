@@ -60,32 +60,36 @@
 
 
             <Button
-                android:id="@+id/driver"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Driver"
+                android:id="@+id/driver"
                 android:textStyle="normal"
                 android:background="@drawable/button_resource"
                 android:layout_gravity="center"
-                android:paddingLeft="60dp"
-                android:paddingRight="60dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp" />
-
-            <Button
-                android:id="@+id/customer"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="Customer"
-                android:textStyle="normal"
-                android:background="@drawable/button_resource"
-                android:layout_gravity="center"
-                android:paddingLeft="50dp"
-                android:paddingRight="50dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="36dp"
+                android:drawablePadding="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="10dp"
                 />
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Customer"
+                android:id="@+id/customer"
+                android:textStyle="normal"
+                android:background="@drawable/button_resource"
+                android:layout_gravity="center"
+                android:drawablePadding="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="10dp"
+                />
         </LinearLayout>
 
     </ScrollView>

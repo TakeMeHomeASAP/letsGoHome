@@ -30,7 +30,7 @@ public class DriverLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_login);
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -66,7 +66,7 @@ public class DriverLoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(DriverLoginActivity.this, "Sign up failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DriverLoginActivity.this, "Couldn't register, check internet connection", Toast.LENGTH_SHORT).show();
 
                         }else{
                             String user_id = mAuth.getCurrentUser().getUid();
@@ -90,7 +90,7 @@ public class DriverLoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(DriverLoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DriverLoginActivity.this, "Credentials doesn't match", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

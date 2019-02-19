@@ -73,6 +73,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Try to request a driver
                 try {
                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -86,9 +87,12 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     mRequest.setText("Getting your Driver....");
 
                     getClosestDriver();  //invoke function
-                }catch(Exception ex){
-                    Toast.makeText(CustomerMapActivity.this, "Something went wrong: " + ex.getStackTrace(), Toast.LENGTH_SHORT).show();
 
+                }catch(Exception ex){
+                    Toast.makeText(CustomerMapActivity.this, "Something went wrong: " + ex.getMessage()
+                            .toString(), Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(CustomerMapActivity.this, "Try enabling your location!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

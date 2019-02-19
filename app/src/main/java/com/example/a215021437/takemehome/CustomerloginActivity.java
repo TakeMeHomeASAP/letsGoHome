@@ -58,25 +58,32 @@ public class CustomerloginActivity extends AppCompatActivity {
         bLogin = (Button) findViewById(R.id.Login);
         bRegistrtion = (Button) findViewById(R.id.Registration);
 
+
+
         bRegistrtion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String email = eEmail.getText().toString();
-                final String pasword = ePassword.getText().toString();
-                nAuth.createUserWithEmailAndPassword(email, pasword).addOnCompleteListener(CustomerloginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
-                            Toast.makeText(CustomerloginActivity.this, "Sign up failed", Toast.LENGTH_SHORT).show();
+                if(eEmail.toString() != ""  && ePassword.toString() != "") {
+                    final String email = eEmail.getText().toString();
+                    final String pasword = ePassword.getText().toString();
+                    nAuth.createUserWithEmailAndPassword(email, pasword).addOnCompleteListener(CustomerloginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(CustomerloginActivity.this, "Couldn't register, check internet connection", Toast.LENGTH_SHORT).show();
 
-                        }else{
-                            String user_id = nAuth.getCurrentUser().getUid();
-                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id);
-                            current_user_db.setValue(true);
-
+                            } else {
+                                String user_id = nAuth.getCurrentUser().getUid();
+                                DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id);
+                                current_user_db.setValue(true);
+                                Toast.makeText(CustomerloginActivity.this, "Registered successfully, proceed to login", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+                }else{
+                    Toast.makeText(CustomerloginActivity.this, "Fields cannot be empty", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
@@ -84,21 +91,25 @@ public class CustomerloginActivity extends AppCompatActivity {
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String email = eEmail.getText().toString();
-                final String pasword = ePassword.getText().toString();
-                nAuth.signInWithEmailAndPassword(email, pasword).addOnCompleteListener(CustomerloginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
-                            Toast.makeText(CustomerloginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
+                if(eEmail.toString() != ""  && ePassword.toString() != "") {
+                    final String email = eEmail.getText().toString();
+                    final String pasword = ePassword.getText().toString();
+                    nAuth.signInWithEmailAndPassword(email, pasword).addOnCompleteListener(CustomerloginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(!task.isSuccessful()){
+                                Toast.makeText(CustomerloginActivity.this, "Credentials doesn't match", Toast.LENGTH_SHORT).show();
 
-                        }else{
+                            }else{
+                                Toast.makeText(CustomerloginActivity.this, "Logging in...", Toast.LENGTH_SHORT).show();
 
-
+                            }
                         }
-                    }
-                });
+                    });
+                }else{
+                    Toast.makeText(CustomerloginActivity.this, "Fields cannot be empty", Toast.LENGTH_SHORT).show();
 
+                }
             }
         });
     }
